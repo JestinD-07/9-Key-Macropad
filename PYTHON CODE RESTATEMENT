@@ -1,0 +1,35 @@
+*I already added this all in the codespace, but I'm just restating it for better accessability!*
+
+import board
+
+from kmk.kmk_keyboard import KMKKeyboard
+from kmk.keys import KC
+from kmk.scanners import DiodeOrientation
+
+# Creating the keyboard
+keyboard = KMKKeyboard()   
+
+keyboard.row_pins = (board.GP0, board.GP1, board.GP2)
+keyboard.col_pins = (board.GP3, board.GP4, board.GP5)
+keyboard.diode_orientation = DiodeOrientation.COL2ROW
+
+# 3x3 Macropad REFERENCE
+# [1] [2] [3]
+# [4] [5] [6]
+# [7] [8] [9]
+
+keyboard.keymap = [
+	[
+		KC.LCTL(KC.C),          # 1 - Copy
+		KC.LCTL(KC.V),          # 2 - Paste
+		KC.LCTL(KC.Z),          # 3 - Undo
+		KC.LCTL(KC.Y),          # 4 - Redo
+		KC.PSCR,                # 5 - Screenshot
+		KC.LCTL(KC.F),          # 6 - Find/Search
+		KC.LCTL(KC.T),          # 7 - New Tab
+		KC.LCTL(KC.W),          # 8 - Close Tab
+		KC.LCTL(KC.LSFT(KC.T)), # 9 - Reopen Closed Tab
+	]
+]
+
+keyboard.go()
